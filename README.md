@@ -4,6 +4,7 @@ IM data etl process
 ## 系统部署
 ### 1. 构建自定义airflow镜像，安装以来
 ```bash
+cd data-inteface
 docker build -t airflow-own:v0.1 .
 ```
 ### 2. 启动psql和airflow服务
@@ -24,7 +25,13 @@ docker-compose run airflow-webserver airflow users create \
 docker-compose up -d
 ```
 
-### 3. 启动数据查询后台服务
+### 3. 构建数据查询后台服务镜并启动服务
+```bash
+cd data-process/data-intefence
+docker build -t data-search:v0.1 .
+cd ..
+docker-compose up flask-app -d
+```
 
 
 ## 系统运行截图
