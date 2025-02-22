@@ -25,3 +25,14 @@ docker-compose up -d
 ```
 
 ### 3. 启动数据查询后台服务
+
+
+## 系统运行截图
+airflow dag_run execute status
+
+psql database
+![alt text](image-2.png)
+Retrieve a list of users with their total transaction amounts.
+![alt text](image.png)
+Retrieve transaction details for a specific user.
+![alt text](image-1.png)

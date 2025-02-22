@@ -24,4 +24,4 @@ def search_trans_detail(data):
 def search_trans_summary(data):
     user_ids = data.get("user_ids", [])
     result = Transaction.get_amount_sum_by_user(user_ids)
-    return jsonify({'answer':result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
+    return jsonify({'trans_summary': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
