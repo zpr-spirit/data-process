@@ -11,7 +11,6 @@ config_local.ini
 /local_test/
 *local
 *test*
-*.json
 info_extraction
 enc.js
 *.js
