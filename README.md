@@ -36,7 +36,8 @@ docker-compose up flask-app -d
 
 ## 系统运行截图
 airflow dag_run execute status
-
+![alt text](image-3.png)
+![alt text](image-4.png)
 psql database
 ![alt text](image-2.png)
 Retrieve a list of users with their total transaction amounts.

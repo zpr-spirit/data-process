@@ -21,9 +21,10 @@ services:
       AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
     volumes:
-      - ./dags:/data1/data/airflow/dags
+      - /root/przhang/data-process/dags:/opt/airflow/dags
       - ./logs:/data1/data/airflow/logs
       - ./plugins:/data1/data/airflow/plugins
+      - /root/przhang/data-process/data:/opt/airflow/data 
     ports:
       - "8080:8080"
     depends_on:
@@ -38,9 +39,10 @@ services:
       AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
     volumes:
-      - ./dags:/data1/data/airflow/dags
+      - /root/przhang/data-process/dags:/opt/airflow/dags
       - ./logs:/data1/data/airflow/logs
       - ./plugins:/data1/data/airflow/plugins
+      - /root/przhang/data-process/data:/opt/airflow/data 
     depends_on:
       - postgres
     command: scheduler

@@ -22,12 +22,12 @@ dag = DAG(
 
 # 读取用户信息表
 def read_user_info():
-    df_userinfo = pd.read_csv('/root/przhang/data-process/data/process-data-userinfo.csv')
+    df_userinfo = pd.read_csv('/opt/airflow/data/process-data-userinfo.csv')
     return df_userinfo
 
 # 读取交易流水表
 def read_transac_detail():
-    trans_detail = pd.read_json('/root/przhang/data-process/data/process-data-trans-detail.json')
+    trans_detail = pd.read_json('/opt/airflow/data/process-data-trans-detail.json')
     trans_detail['timestamp'] = pd.to_datetime(trans_detail['timestamp'])
     user_mean_amount = trans_detail.groupby('user_id')['amount'].transform('mean')
     trans_detail['amount'] = trans_detail['amount'].fillna(user_mean_amount)
