@@ -10,7 +10,7 @@ IM data etl process
 docker-compose文件为项目部署文件
 
 ## 系统部署
-### 1. 构建自定义airflow镜像，安装以来
+### 1. 构建自定义airflow镜像，安装依赖
 ```bash
 cd data-inteface
 docker build -t airflow-own:v0.1 .
