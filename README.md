@@ -1,5 +1,10 @@
 # data-process
 IM data etl process
+## 项目说明
+/dags 路径存储airflow dag，挂载至airflow用于每日定时任务出发
+/data 文件路径存储test数据，分别为userinfo和transdetail，并挂载至airflow
+/data-intefence为flask应用，封装数据检索接口，提供服务
+docker-compose文件为项目部署文件
 
 ## 系统部署
 ### 1. 构建自定义airflow镜像，安装以来
