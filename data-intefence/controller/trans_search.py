@@ -16,12 +16,21 @@ def search_trans_detail(data):
     user_id = data.get('user_id', "")
     transactions = Transaction.query.filter_by(user_id=user_id).all()
     result = [transaction.to_dict() for transaction in transactions]
-    logging.info(f"user_id is : {user_id}, search transaction detail success.")
-    return jsonify({'trans_detail': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
+    if not result:
+        logging.info(f"user_id {user_id} is illegal.")
+        return jsonify({'trans_detail': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.NOT_FOUND
+    else:
+        logging.info(f"user_id is : {user_id}, search transaction detail success.")
+        return jsonify({'trans_detail': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
 
 @router_trans.route('/inteface/trans/summary', methods=['POST'])
 @use_args(TransSumSchema(), location="json")
 def search_trans_summary(data):
     user_ids = data.get("user_ids", [])
     result = Transaction.get_amount_sum_by_user(user_ids)
-    return jsonify({'trans_summary': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
+    if not result:
+        logging.info(f"user_id {user_ids} is illegal.")
+        return jsonify({'trans_detail': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.NOT_FOUND
+    else:
+        logging.info(f"user_ids is : {user_ids}, search transaction summary success.")
+        return jsonify({'trans_summary': result,'timestamp':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'err_msg':''}), HTTPStatus.OK
